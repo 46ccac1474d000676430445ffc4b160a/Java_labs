@@ -13,22 +13,19 @@ public class Planet {
     private String name;
     private double radius;
     private double mass;
-    private int massPower;
     private String system;
     
     Planet() {
         this.name = "Earth";
         this.radius = 6371;
-        this.mass = 5.9726;
-        this.massPower = 24;
+        this.mass = 5.9726E24;
         this.system = "Solar system";        
     }
     
-    Planet(String name, double radius, double mass, int massPower, String system) {
+    Planet(String name, double radius, double mass, String system) {
         this.name = name;
         this.radius = radius;
         this.mass = mass;
-        this.massPower = massPower;
         this.system = system;
     }
 
@@ -51,20 +48,9 @@ public class Planet {
     public double getMass() {
         return mass;
     }
-
-    public int getMassPower() {
-        return massPower;
-    }
     
-    public double getCountedMass() {
-        double mult = 1.0;
-        for (int i = 0; i < massPower; i++) mult *= 10;
-        return mass*mult;
-    }
-    
-    public void setMass(double mass, int massPower) {
+    public void setMass(double mass) {
         this.mass = mass;
-        this.massPower = massPower;
     }
 
     public String getSystem() {
@@ -77,10 +63,15 @@ public class Planet {
     
     @Override
     public String toString() {
-        return getClass().getName() +   " Name: " + name +
+        return getClass().getName() +   " name: " + name +
                                         ", radius: " + radius +
-                                        ", mass: " + mass + "x(10^" + massPower +
-                                        "), system: " + system;
+                                        ", mass: " + getMass() +
+                                        ", system: " + system;
+    }
+    
+    public boolean compare(Object obj) {
+        Planet p = (Planet)obj;
+        return (name.equals(p.getName()) && radius == p.getRadius() && mass == p.getMass() && system.equals(p.getSystem()));
     }
     
 }

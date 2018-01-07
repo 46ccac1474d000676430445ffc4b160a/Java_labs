@@ -6,6 +6,8 @@ package edu.lab8;
  */
 
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Lab8 {
 
@@ -15,31 +17,20 @@ public class Lab8 {
         
         String text = new String();
         
-        FileReader reader;
+        BufferedReader buf = null;
         
         try {
-            reader = new FileReader("file.txt");
             
-            int c;
-            while((c=reader.read())!=-1){
-                 
-                text += ((char)c);
-            }
+            buf = new BufferedReader(new FileReader("file.txt"));
             
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex);
+            String t;
+            while ( (t = buf.readLine()) != null ) printNwordSent(t, avaibleNumOfWords);
+            
         } catch (IOException ex) {
-            System.out.println(ex);
-        }
-        
-        int pos = 0;
-        for (int i = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            if ( c == '.' || i == (text.length()-1) ) {
-                String substr = text.substring(pos, i+1);
-                pos = i+1;
-                if (checkStr(substr, avaibleNumOfWords)) System.out.println(substr); 
-            }
+            try {
+                if (buf != null) buf.close();
+            } catch (IOException ex2) {}
+            ex.printStackTrace(System.out);
         }
         
     }
@@ -59,6 +50,18 @@ public class Lab8 {
         
         return (counter == c);
         
+    }
+    
+    private static void printNwordSent(String text, int N) {
+        int pos = 0;
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if ( c == '.' || i == (text.length()-1) ) {
+                String substr = text.substring(pos, i+1);
+                pos = i+1;
+                if (checkStr(substr, N)) System.out.println(substr); 
+            }
+        }
     }
     
 }

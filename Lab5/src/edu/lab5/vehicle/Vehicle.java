@@ -14,7 +14,7 @@ public abstract class Vehicle {
     protected boolean vehicleStarted;
     
     public Vehicle() {
-        weight = power = speed = direction = 0.;
+        speed = direction = 0.;
         vehicleStarted = false;
     }
     

@@ -14,6 +14,11 @@ public class SportCar extends Car {
     }
 
     @Override
+    public String getModel() {
+        return "Koenigsegg Agera RS";
+    }
+    
+    @Override
     public String getCountry() {
         return "Sweden";
     }
@@ -26,11 +31,6 @@ public class SportCar extends Car {
     @Override
     public String getCity() {
         return "Margretetorp";
-    }
-
-    @Override
-    public String getModel() {
-        return "Koenigsegg Agera RS";
     }
     
 }

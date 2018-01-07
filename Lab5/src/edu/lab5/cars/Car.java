@@ -10,18 +10,18 @@ import edu.lab5.producer.Producer;
 
 public abstract class Car extends Vehicle implements Producer {
     
-    protected double cargoVol;
+    protected double cargoCapacity;
     protected int numOfWheels;
     protected int numOfSeats;
     
     Car() {
-        cargoVol = 0.0;
+        cargoCapacity = 0.0;
         numOfWheels = 4;
         numOfSeats = 5;
     }
     
-    public double getCargoVol() {
-        return cargoVol;
+    public double getCargoCapacity() {
+        return cargoCapacity;
     }
     
     public int getNumOfWheels() {

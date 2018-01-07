@@ -47,14 +47,13 @@ public class Lab8 {
     private static boolean checkStr(String s, int c) {
         
         int counter = 0;
-
-        for (int i = 0; i < s.length();) {
-
-            while ( i < s.length() && !Character.isAlphabetic(s.charAt(i)) ) i++;
-            if (i >= s.length()) break;
-            while ( i < s.length() && Character.isAlphabetic(s.charAt(i)) ) i++;
+        int N = s.length();
+        for (int i = 0;;) {
+            
+            while ( i < N && !Character.isAlphabetic(s.charAt(i)) ) i++;
+            if (i >= N) break;
+            while ( i < N && Character.isAlphabetic(s.charAt(i)) ) i++;
             counter++;
-            if (i >= s.length()) break;
             
         }
         
